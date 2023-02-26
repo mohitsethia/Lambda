@@ -24,7 +24,6 @@ namespace SendEmailLambda;
 
 public class Function
 {
-    private readonly IConfigurationSection app_settings = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("AppSettings");
     /// <summary>
     /// A simple function that takes a string and does a ToUpper
     /// </summary>
@@ -33,11 +32,8 @@ public class Function
     /// <returns></returns>
     public async Task SendEmailHandler(SQSEvent sqsEvent, ILambdaContext context)
     {
-        var accessKeyID = app_settings["AccessKeyID"];
-        var secretKey = app_settings["SecretAccessKey"];
-        var credentials = new BasicAWSCredentials(accessKeyID, secretKey);
-        var sqsClient = new AmazonSQSClient(credentials, RegionEndpoint.USEast1);
-        var qUrl = "https://sqs.us-east-1.amazonaws.com/363402790710/testqueue";
+        var sqsClient = SQSClientProvider.GetSQSClient();
+        var qUrl = AppConfig.app_settings["QueueURL"];
         var message = await GetMessage(sqsClient, qUrl, 2);
         foreach (var msg in message.Messages)
         {
@@ -72,28 +68,14 @@ public class Function
               email.From.Add(MailboxAddress.Parse(entry.Value.StringValue));
             } else if(entry.Key == "sendTo") {
               email.To.Add(MailboxAddress.Parse(entry.Value.StringValue));
+            } else if (entry.Key == "emailSubject") {
+                email.Subject = entry.Value.StringValue;
             }
         }
-        email.Subject = "Hey there!";
         email.Body = new TextPart(TextFormat.Html);
 
         // send email
-        using var smtp = new SmtpClient();
-        smtp.Connect(app_settings["SmtpHost"], int.Parse(app_settings["SmtpPort"]), SecureSocketOptions.StartTls);
-        smtp.Authenticate(app_settings["SmtpUser"], app_settings["SmtpPass"]);
-        smtp.Send(email);
-        // var sendGridClient = new SendGridClient("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");
-
-        // var from = new EmailAddress($"'{message.Attributes["sendFrom"]}'", $"'{message.Attributes["sendFromName"]}'");
-        // var subject = "Sending with SendGrid is Fun";
-        // var to = new EmailAddress($"'{message.Attributes["sendTo"]}'", $"'{message.Attributes["sendToName"]}'");
-        // var plainTextContent = "and easy to do anywhere, even with C#";
-        // var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
-        // var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-
-        // var response = await sendGridClient.SendEmailAsync(msg);
-
-        // context.Logger.LogLine($"Email sent: {response.StatusCode}");
+        SMTPClient.GetSMTPClient().Send(email);
 
     }
 }
