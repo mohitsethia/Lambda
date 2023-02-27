@@ -93,3 +93,6 @@
 /Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/linux-x64/System.Security.Permissions.dll
 /Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/linux-x64/System.Text.Encodings.Web.dll
 /Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/linux-x64/System.Text.Json.dll
+/Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/linux-x64/AWSSDK.SimpleEmail.dll
+/Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/linux-x64/AWSSDK.SecretsManager.dll
+/Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/linux-x64/Amazon.SecretsManager.Extensions.Caching.dll

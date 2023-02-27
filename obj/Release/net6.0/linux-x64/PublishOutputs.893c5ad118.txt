@@ -7,6 +7,9 @@
 /Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/publish/Amazon.Lambda.Serialization.SystemTextJson.dll
 /Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/publish/Amazon.Lambda.SQSEvents.dll
 /Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/publish/AWSSDK.Core.dll
+/Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/publish/AWSSDK.SecretsManager.dll
+/Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/publish/Amazon.SecretsManager.Extensions.Caching.dll
+/Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/publish/AWSSDK.SimpleEmail.dll
 /Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/publish/AWSSDK.SQS.dll
 /Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/publish/MailKit.dll
 /Users/mohitsethia/Documents/SendEmailLambda/src/SendEmailLambda/bin/Release/net6.0/publish/Microsoft.AspNetCore.Antiforgery.dll

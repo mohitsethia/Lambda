@@ -10,6 +10,8 @@
       "SendEmailLambda/1.0.0": {
         "dependencies": {
           "AWSSDK.SQS": "3.7.100.79",
+          "AWSSDK.SecretsManager.Caching": "1.0.5",
+          "AWSSDK.SimpleEmail": "3.7.100.79",
           "Amazon.Lambda.Core": "2.1.0",
           "Amazon.Lambda.SQSEvents": "2.1.0",
           "Amazon.Lambda.Serialization.SystemTextJson": "2.3.0",
@@ -55,6 +57,40 @@
           "lib/netcoreapp3.1/AWSSDK.Core.dll": {
             "assemblyVersion": "3.3.0.0",
             "fileVersion": "3.7.105.8"
+          }
+        }
+      },
+      "AWSSDK.SecretsManager/3.7.2.59": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.105.8"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.SecretsManager.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.2.59"
+          }
+        }
+      },
+      "AWSSDK.SecretsManager.Caching/1.0.5": {
+        "dependencies": {
+          "AWSSDK.SecretsManager": "3.7.2.59",
+          "Microsoft.Extensions.Caching.Memory": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Amazon.SecretsManager.Extensions.Caching.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "AWSSDK.SimpleEmail/3.7.100.79": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.105.8"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.SimpleEmail.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.100.79"
           }
         }
       },
@@ -2056,6 +2092,27 @@
       "sha512": "sha512-JkZIT/UJBd/llxZlVurt8vaYjq7I6qtPK1WjaR93K+rSbYcuPSKuNQ10HejxIQfu8eFyIOoue39YnM/mo7x3KQ==",
       "path": "awssdk.core/3.7.105.8",
       "hashPath": "awssdk.core.3.7.105.8.nupkg.sha512"
+    },
+    "AWSSDK.SecretsManager/3.7.2.59": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WVR7q4sFbmVBbJgGgFZdqMFCjf9ZJOuVQsAt6UCZcUHzA3Y09aYWASOq1huNowGNUdDt7WaztRsOFeJKyrhkjA==",
+      "path": "awssdk.secretsmanager/3.7.2.59",
+      "hashPath": "awssdk.secretsmanager.3.7.2.59.nupkg.sha512"
+    },
+    "AWSSDK.SecretsManager.Caching/1.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-86hD95wnJQQQf+hoc4yDmUEKtTGeGcAdcJPn0XmcjtDdCnBTHXbNh9sBux4VWoYcK9OyaWEZGKiXE6/sLXg8wQ==",
+      "path": "awssdk.secretsmanager.caching/1.0.5",
+      "hashPath": "awssdk.secretsmanager.caching.1.0.5.nupkg.sha512"
+    },
+    "AWSSDK.SimpleEmail/3.7.100.79": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-s48DqlZ3ILayTtOim9r5GjM7Qzlm9XKklazyN861V2gZsbqP6qXF7UhoKcUHA+51EnPgvWF5UEIG0zDvaY8e6g==",
+      "path": "awssdk.simpleemail/3.7.100.79",
+      "hashPath": "awssdk.simpleemail.3.7.100.79.nupkg.sha512"
     },
     "AWSSDK.SQS/3.7.100.79": {
       "type": "package",
