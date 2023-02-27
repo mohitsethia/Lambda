@@ -10,6 +10,7 @@ using Amazon.Lambda.SQSEvents;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 using Amazon.Runtime;
+using Amazon.Runtime.Internal;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Configuration;
@@ -39,11 +40,14 @@ public class Function
     {
         var sqsClient = SQSClientProvider.GetSQSClient();
         var qUrl = AppConfig.app_settings["QueueUrl"];
-        var message = await GetMessage(sqsClient, qUrl, 2);
-        Console.WriteLine($"message count: {message.Messages.Count}");
-        foreach (var msg in message.Messages)
-        {
-            await ProcessMessageAsync(msg, context);
+        while(true) {
+            var message = await GetMessage(sqsClient, qUrl, 20);
+            Console.WriteLine($"message count: {message.Messages.Count}");
+            foreach (var msg in message.Messages)
+            {
+                await ProcessMessageAsync(msg, context);
+                await sqsClient.DeleteMessageAsync(qUrl, msg.ReceiptHandle);
+            }
         }
     }
 
@@ -72,7 +76,7 @@ public class Function
             MessageAttributeValue value;
             message.MessageAttributes.TryGetValue("eventType", out value);
             if (value.StringValue == "sendEmail") {
-                response = _sendEmailService.SendEmailViaSmtp(message);
+                response = _sendEmailService.SendEmailViaSESClient(message);
             } else if (value.StringValue == "sendTemplatedEmail") {
                 response = _sendTemplatedEmailService.SendTemplatedEmail(message);
             }
